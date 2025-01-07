@@ -1,4 +1,5 @@
 ![workflow status](https://github.com/csci312-f24/project-camelshump/actions/workflows/node.js.yml/badge.svg)
+
 # Project Setup
 
 ## Spotify API Setup
@@ -29,6 +30,7 @@ To run this project, each developer needs to set up their own Spotify Developer 
    NEXTAUTH_SECRET=generate-a-random-string-here
    SPOTIFY_CLIENT_ID=your-client-id-from-spotify-dashboard
    SPOTIFY_CLIENT_SECRET=your-client-secret-from-spotify-dashboard
+   DATABASE_URL=postgres://postgres:postgres@localhost:5432/postgres # Feel free to change this databseURL to connect to an online database(maybe something from Neon Serverless tech)
    ```
 
 8. Generate a random string for NEXTAUTH_SECRET:
@@ -143,19 +145,19 @@ project-root/
 ```
 
 ### Migrations to do before running app
-   ```
-   npx knex migrate:latest
-   npx knex seed:run --specific=sample_user_data.js //run this seed file before the sample_swipes_data.js becuase of foreign key relation
-   npx knex seed:run --specific=sample_swipes_data.js
 
-   ```
+```
+npx knex migrate:latest
+npx knex seed:run --specific=sample_user_data.js //run this seed file before the sample_swipes_data.js becuase of foreign key relation
+npx knex seed:run --specific=sample_swipes_data.js
+
+```
 
 ### Common errors you might run into
- 
- - watchpack error (Occurs due to corrupted file path and next doesnt know which path/socket to watch) so you just have to clear the cache by going to terminal and running 
 
-  ```
-  rm -rf .next
+- watchpack error (Occurs due to corrupted file path and next doesnt know which path/socket to watch) so you just have to clear the cache by going to terminal and running
 
-   ```
-  
+```
+rm -rf .next
+
+```
